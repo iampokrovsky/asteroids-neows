@@ -1,6 +1,7 @@
 package httpserver
 
 import (
+	"net"
 	"net/http"
 	"time"
 )
@@ -8,7 +9,7 @@ import (
 const (
 	defaultReadTimeout  = 5 * time.Second
 	defaultWriteTimeout = 5 * time.Second
-	defaultAddr         = ":80"
+	defaultAddr         = ":8080"
 )
 
 type Server struct {
@@ -19,7 +20,7 @@ func New(handler http.Handler, port string) *Server {
 	addr := defaultAddr
 
 	if port != "" {
-		addr = port
+		addr = net.JoinHostPort("", port)
 	}
 
 	httpServer := &http.Server{

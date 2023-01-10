@@ -1,8 +1,7 @@
 package entity
 
-import "time"
-
 type AsteroidsReport struct {
-	time.Time
-	Count int
+	// TODO: Изменить Date на time.Time
+	Date  string `json:"date"`
+	Count int    `json:"count"`
 }
