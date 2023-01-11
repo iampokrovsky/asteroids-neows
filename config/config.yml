@@ -1,2 +1,6 @@
 http:
   port: "8080"
+
+neows:
+  url: "https://www.neowsapp.com/rest/v1/feed"
+  api_key: "ud17Odoo4QAHLhUEHxWVR05ohZHJ2LcTTSKLZbhb"
