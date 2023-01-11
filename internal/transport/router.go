@@ -11,6 +11,8 @@ type Body struct {
 	Data []entity.AsteroidsReport `json:"neo_counts"`
 }
 
+//  TODO: Добавить валидацию данных
+
 func NewRouter(router *gin.Engine, uc interfaces.Asteroids) {
 	router.GET("/neo/count", func(c *gin.Context) {
 		dates := c.QueryArray("dates")
