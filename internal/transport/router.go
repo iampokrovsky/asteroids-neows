@@ -1,6 +1,7 @@
 package transport
 
 import (
+	"encoding/json"
 	"github.com/gin-gonic/gin"
 	"github.com/pokrovsky-io/neows-asteroids/internal/entity"
 	"github.com/pokrovsky-io/neows-asteroids/internal/interfaces"
@@ -11,19 +12,18 @@ type Body struct {
 	Data []entity.AsteroidsReport `json:"neo_counts"`
 }
 
-//  TODO: Добавить валидацию данных
-
 func NewRouter(router *gin.Engine, uc interfaces.Asteroids) {
 	router.GET("/neo/count", func(c *gin.Context) {
 		dates := c.QueryArray("dates")
-		// TODO: Проверить, является ли массива пустым
 
 		data, err := uc.Get(dates)
 		if err != nil {
-			// TODO: Обработать ошибку
+			c.AbortWithError(http.StatusNotFound, err)
 		}
 
-		c.JSON(http.StatusOK, data)
+		jsonData, _ := json.MarshalIndent(data, "", "  ")
+
+		c.String(http.StatusOK, string(jsonData))
 	})
 
 	router.POST("/neo/count", func(c *gin.Context) {
@@ -34,19 +34,17 @@ func NewRouter(router *gin.Engine, uc interfaces.Asteroids) {
 		}
 
 		if err := uc.Create(body.Data); err != nil {
-			// TODO: Обработать ошибку
+			c.AbortWithError(http.StatusInternalServerError, err)
 		}
 
-		// TODO: Подумать, какой лучше сделать ответ
-		c.JSON(http.StatusAccepted, body.Data)
+		c.String(http.StatusOK, "Данные успешно сохранены!")
 	})
 
 	router.GET("/neo/count/clear", func(c *gin.Context) {
 		if err := uc.Clear(); err != nil {
-			// TODO: Обработать ошибку
+			c.AbortWithError(http.StatusInternalServerError, err)
 		}
 
-		// TODO: Подумать, какой лучше сделать ответ
-		c.JSON(http.StatusOK, "очищено")
+		c.String(http.StatusOK, "Все данные удалены!")
 	})
 }

@@ -2,6 +2,7 @@ package usecase
 
 import (
 	"github.com/pokrovsky-io/neows-asteroids/internal/entity"
+	"github.com/pokrovsky-io/neows-asteroids/internal/errors"
 	"github.com/pokrovsky-io/neows-asteroids/internal/interfaces"
 )
 
@@ -27,19 +28,19 @@ func (uc *AsteroidsUseCase) Create(reports []entity.AsteroidsReport) error {
 
 func (uc *AsteroidsUseCase) Get(dates []string) ([]entity.AsteroidsReport, error) {
 	data, err := uc.repo.Get(dates)
-	if err != nil {
-		return nil, err
-	}
 
-	if len(data) == 0 {
+	switch {
+	case err == errors.ErrReportsNotFound:
 		data, err = uc.webAPI.Get(dates)
 		if err != nil {
 			return nil, err
 		}
 
-		if err := uc.repo.Create(data); err != nil {
+		if err = uc.repo.Create(data); err != nil {
 			return nil, err
 		}
+	case err != nil:
+		return nil, err
 	}
 
 	return data, nil

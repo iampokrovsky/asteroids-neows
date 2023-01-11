@@ -1,17 +1,12 @@
 package storage
 
 import (
-	"errors"
 	"github.com/jmoiron/sqlx"
 	"github.com/pokrovsky-io/neows-asteroids/internal/entity"
 )
 
 const (
 	defaultCapacity = 10
-)
-
-var (
-	ErrReportsNotFound = errors.New("one or more reports not found")
 )
 
 type Storage struct {

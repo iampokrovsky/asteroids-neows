@@ -51,7 +51,7 @@ func TestNeoWsAPI_Get(t *testing.T) {
 		dates = append(dates, tc.Date)
 	}
 
-	res, _ := api.Get(dates...)
+	res, _ := api.Get(dates)
 
 	assert.Equal(t, testCases, res)
 }
