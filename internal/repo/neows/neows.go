@@ -39,20 +39,17 @@ func (api *NeoWsAPI) makeRequest(wg *sync.WaitGroup, date string, out chan<- ent
 
 	res, err := http.DefaultClient.Do(req)
 	if err != nil {
-		// TODO Обработать ошибку
 		return
 	}
 	defer res.Body.Close()
 
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
-		// TODO Обработать ошибку
 		return
 	}
 
 	var data Data
 	if err := json.Unmarshal(body, &data); err != nil {
-		// TODO Обработать ошибку
 		return
 	}
 

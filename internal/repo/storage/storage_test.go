@@ -43,8 +43,6 @@ var testCases = []entity.AsteroidsReport{
 	},
 }
 
-// TODO Вынести общие данные в подготовку
-
 func TestStorage_CreateAndGet(t *testing.T) {
 	db, err := postgres.New(dbUrl)
 	if err != nil {

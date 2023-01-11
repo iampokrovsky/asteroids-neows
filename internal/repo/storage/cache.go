@@ -26,7 +26,6 @@ func (c *cache) check(dates []string) bool {
 	return true
 }
 
-// TODO Кэш отсортировать массив
 func (c *cache) get(dates []string) ([]entity.AsteroidsReport, error) {
 	if !c.check(dates) {
 		return nil, errors.ErrReportsNotFound

@@ -30,7 +30,6 @@ func (psql *psql) getAll() ([]entity.AsteroidsReport, error) {
 	return res, nil
 }
 
-// TODO Использовать namedExec
 func (psql *psql) update(reports []entity.AsteroidsReport) error {
 	if len(reports) == 0 {
 		return nil
