@@ -8,6 +8,7 @@ import (
 type Config struct {
 	HTTP  `yaml:"http"`
 	NeoWs `yaml:"neows"`
+	DB    `yaml:"db"`
 }
 
 type HTTP struct {
@@ -17,6 +18,15 @@ type HTTP struct {
 type NeoWs struct {
 	URL    string `yaml:"url"`
 	ApiKey string `yaml:"api_key"`
+}
+
+type DB struct {
+	Host     string `yaml:"host"`
+	Port     string `yaml:"port"`
+	DBName   string `yaml:"dbname"`
+	User     string `yaml:"user"`
+	Password string `yaml:"password"`
+	SSLMode  string `yaml:"sslmode"`
 }
 
 func NewConfig() (*Config, error) {

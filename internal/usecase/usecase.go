@@ -17,19 +17,19 @@ func New(r interfaces.AsteroidsRepo, w interfaces.AsteroidsWebAPI) *AsteroidsUse
 	}
 }
 
-func (uc *AsteroidsUseCase) Get(dates ...string) ([]entity.AsteroidsReport, error) {
-	data, err := uc.repo.Get(dates...)
+func (uc *AsteroidsUseCase) Get(dates []string) ([]entity.AsteroidsReport, error) {
+	data, err := uc.repo.Get(dates)
 	if err != nil {
 		return nil, err
 	}
 
 	if len(data) == 0 {
-		data, err = uc.webAPI.Get(dates...)
+		data, err = uc.webAPI.Get(dates)
 		if err != nil {
 			return nil, err
 		}
 
-		if err := uc.Create(data...); err != nil {
+		if err := uc.repo.Create(data); err != nil {
 			return nil, err
 		}
 	}
@@ -37,8 +37,8 @@ func (uc *AsteroidsUseCase) Get(dates ...string) ([]entity.AsteroidsReport, erro
 	return data, nil
 }
 
-func (uc *AsteroidsUseCase) Create(reports ...entity.AsteroidsReport) error {
-	if err := uc.Create(reports...); err != nil {
+func (uc *AsteroidsUseCase) Create(reports []entity.AsteroidsReport) error {
+	if err := uc.repo.Create(reports); err != nil {
 		return err
 	}
 

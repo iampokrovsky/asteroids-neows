@@ -18,7 +18,7 @@ func NewRouter(router *gin.Engine, uc interfaces.Asteroids) {
 		dates := c.QueryArray("dates")
 		// TODO: Проверить, является ли массива пустым
 
-		data, err := uc.Get(dates...)
+		data, err := uc.Get(dates)
 		if err != nil {
 			// TODO: Обработать ошибку
 		}
@@ -33,11 +33,20 @@ func NewRouter(router *gin.Engine, uc interfaces.Asteroids) {
 			return
 		}
 
-		if err := uc.Create(body.Data...); err != nil {
+		if err := uc.Create(body.Data); err != nil {
 			// TODO: Обработать ошибку
 		}
 
 		// TODO: Подумать, какой лучше сделать ответ
 		c.JSON(http.StatusAccepted, body.Data)
+	})
+
+	router.GET("/neo/count/clear", func(c *gin.Context) {
+		if err := uc.Clear(); err != nil {
+			// TODO: Обработать ошибку
+		}
+
+		// TODO: Подумать, какой лучше сделать ответ
+		c.JSON(http.StatusOK, "очищено")
 	})
 }

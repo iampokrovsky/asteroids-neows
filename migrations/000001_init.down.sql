@@ -1,0 +1,1 @@
+DROP TABLE neo_count;

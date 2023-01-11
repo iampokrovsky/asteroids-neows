@@ -4,3 +4,11 @@ http:
 neows:
   url: "https://www.neowsapp.com/rest/v1/feed"
   api_key: "ud17Odoo4QAHLhUEHxWVR05ohZHJ2LcTTSKLZbhb"
+
+db:
+  host: "localhost"
+  port: "5432"
+  dbname: "asteroids"
+  user: "admin"
+  password: "admin"
+  sslmode: "disable"
