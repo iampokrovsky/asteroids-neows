@@ -29,6 +29,10 @@ type DB struct {
 	SSLMode  string `yaml:"sslmode"`
 }
 
+func (db *DB) GetURL() string {
+	return fmt.Sprintf("host=%s port=%s dbname=%s user=%s password=%s sslmode=%s", db.Host, db.Port, db.DBName, db.User, db.Password, db.SSLMode)
+}
+
 func NewConfig() (*Config, error) {
 	cfg := &Config{}
 	if err := cleanenv.ReadConfig("./config/config.yml", cfg); err != nil {

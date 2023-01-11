@@ -64,7 +64,7 @@ func (api *NeoWsAPI) makeRequest(wg *sync.WaitGroup, date string, out chan<- ent
 	out <- rep
 }
 
-func (api *NeoWsAPI) Get(dates ...string) ([]entity.AsteroidsReport, error) {
+func (api *NeoWsAPI) Get(dates []string) ([]entity.AsteroidsReport, error) {
 	wg := &sync.WaitGroup{}
 	out := make(chan entity.AsteroidsReport, len(dates))
 

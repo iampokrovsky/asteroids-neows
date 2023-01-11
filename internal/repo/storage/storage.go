@@ -2,7 +2,6 @@ package storage
 
 import (
 	"errors"
-	"fmt"
 	"github.com/jmoiron/sqlx"
 	"github.com/pokrovsky-io/neows-asteroids/internal/entity"
 )
@@ -66,30 +65,15 @@ func (stg *Storage) getDifference(reports []entity.AsteroidsReport) (create, upd
 func (stg *Storage) Create(reports []entity.AsteroidsReport) error {
 	create, update := stg.getDifference(reports)
 
-	fmt.Println("create:", create)
-
 	if err := stg.psql.create(create); err != nil {
 		return err
 	}
-
-	fmt.Println("update:", update)
 
 	if err := stg.psql.update(update); err != nil {
 		return err
 	}
 
 	stg.cache.create(reports)
-
-	// Cache data
-	fmt.Println("cache:", stg.cache.data)
-
-	// DB data
-	data, err := stg.psql.getAll()
-	if err != nil {
-		return err
-	}
-
-	fmt.Println("dbdata:", data)
 
 	return nil
 }

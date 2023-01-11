@@ -17,6 +17,14 @@ func New(r interfaces.AsteroidsRepo, w interfaces.AsteroidsWebAPI) *AsteroidsUse
 	}
 }
 
+func (uc *AsteroidsUseCase) Create(reports []entity.AsteroidsReport) error {
+	if err := uc.repo.Create(reports); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (uc *AsteroidsUseCase) Get(dates []string) ([]entity.AsteroidsReport, error) {
 	data, err := uc.repo.Get(dates)
 	if err != nil {
@@ -37,10 +45,6 @@ func (uc *AsteroidsUseCase) Get(dates []string) ([]entity.AsteroidsReport, error
 	return data, nil
 }
 
-func (uc *AsteroidsUseCase) Create(reports []entity.AsteroidsReport) error {
-	if err := uc.repo.Create(reports); err != nil {
-		return err
-	}
-
-	return nil
+func (uc *AsteroidsUseCase) Clear() error {
+	return uc.repo.Clear()
 }
