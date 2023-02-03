@@ -1,10 +1,10 @@
 package transport
 
 import (
+	"asteroids-neows/internal/entity"
+	"asteroids-neows/internal/interfaces"
 	"encoding/json"
 	"github.com/gin-gonic/gin"
-	"github.com/pokrovsky-io/neows-asteroids/internal/entity"
-	"github.com/pokrovsky-io/neows-asteroids/internal/interfaces"
 	"net/http"
 )
 

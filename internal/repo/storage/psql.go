@@ -1,8 +1,8 @@
 package storage
 
 import (
+	"asteroids-neows/internal/entity"
 	"github.com/jmoiron/sqlx"
-	"github.com/pokrovsky-io/neows-asteroids/internal/entity"
 )
 
 type psql struct {

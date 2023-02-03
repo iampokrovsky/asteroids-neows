@@ -1,4 +1,4 @@
-module github.com/pokrovsky-io/neows-asteroids
+module asteroids-neows
 
 go 1.19
 

@@ -1,9 +1,9 @@
 package storage_test
 
 import (
-	"github.com/pokrovsky-io/neows-asteroids/internal/entity"
-	"github.com/pokrovsky-io/neows-asteroids/internal/repo/storage"
-	"github.com/pokrovsky-io/neows-asteroids/pkg/postgres"
+	"asteroids-neows/internal/entity"
+	"asteroids-neows/internal/repo/storage"
+	"asteroids-neows/pkg/postgres"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )

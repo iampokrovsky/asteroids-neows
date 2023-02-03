@@ -1,14 +1,14 @@
 package app
 
 import (
+	"asteroids-neows/config"
+	"asteroids-neows/internal/repo/neows"
+	"asteroids-neows/internal/repo/storage"
+	"asteroids-neows/internal/transport"
+	"asteroids-neows/internal/usecase"
+	"asteroids-neows/pkg/httpserver"
+	"asteroids-neows/pkg/postgres"
 	"github.com/gin-gonic/gin"
-	"github.com/pokrovsky-io/neows-asteroids/config"
-	"github.com/pokrovsky-io/neows-asteroids/internal/repo/neows"
-	"github.com/pokrovsky-io/neows-asteroids/internal/repo/storage"
-	"github.com/pokrovsky-io/neows-asteroids/internal/transport"
-	"github.com/pokrovsky-io/neows-asteroids/internal/usecase"
-	"github.com/pokrovsky-io/neows-asteroids/pkg/httpserver"
-	"github.com/pokrovsky-io/neows-asteroids/pkg/postgres"
 	"log"
 )
 

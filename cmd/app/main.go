@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/pokrovsky-io/neows-asteroids/config"
-	"github.com/pokrovsky-io/neows-asteroids/internal/app"
+	"asteroids-neows/config"
+	"asteroids-neows/internal/app"
 )
 
 func main() {

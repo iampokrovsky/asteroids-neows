@@ -1,9 +1,9 @@
 package usecase
 
 import (
-	"github.com/pokrovsky-io/neows-asteroids/internal/entity"
-	"github.com/pokrovsky-io/neows-asteroids/internal/errors"
-	"github.com/pokrovsky-io/neows-asteroids/internal/interfaces"
+	"asteroids-neows/internal/entity"
+	"asteroids-neows/internal/errors"
+	"asteroids-neows/internal/interfaces"
 )
 
 type AsteroidsUseCase struct {

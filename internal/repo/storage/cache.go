@@ -1,8 +1,8 @@
 package storage
 
 import (
-	"github.com/pokrovsky-io/neows-asteroids/internal/entity"
-	"github.com/pokrovsky-io/neows-asteroids/internal/errors"
+	"asteroids-neows/internal/entity"
+	"asteroids-neows/internal/errors"
 )
 
 type cache struct {

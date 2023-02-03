@@ -1,6 +1,6 @@
 package interfaces
 
-import "github.com/pokrovsky-io/neows-asteroids/internal/entity"
+import "asteroids-neows/internal/entity"
 
 type AsteroidsRepo interface {
 	Create(reports []entity.AsteroidsReport) error
